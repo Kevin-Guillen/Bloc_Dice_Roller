@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
-
-import 'assets/assets.dart';
+import 'utils/assets.dart';
 import 'utils/constants.dart';
 
-class Dice extends StatefulWidget {
+class DicePage extends StatefulWidget {
   @override
-  _DiceState createState() => _DiceState();
+  _DicePageState createState() => _DicePageState();
 }
 
-class _DiceState extends State<Dice> {
-  AssetImage topDice, bottomDice;
+class _DicePageState extends State<DicePage> {
+  late AssetImage topDice;
+  late AssetImage bottomDice;
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      topDice = one;
-      bottomDice = one;
+      topDice = diceOne;
+      bottomDice = diceOne;
     });
   }
-
-  void diceChanger() {}
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +41,12 @@ class _DiceState extends State<Dice> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.fromLTRB(50.0, 50.0, 50.0, 20.0),
+                margin: EdgeInsets.fromLTRB(
+                  Constants.dicesContainerMarginLeftTopRight,
+                  Constants.dicesContainerMarginLeftTopRight,
+                  Constants.dicesContainerMarginLeftTopRight,
+                  Constants.dicesContainerMarginBottom,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -61,9 +64,8 @@ class _DiceState extends State<Dice> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: Constants.buttonTopMargin),
-                child: RaisedButton(
-                  padding: EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 20.0),
+                margin: EdgeInsets.only(top: Constants.playButtonTopMargin),
+                child: ElevatedButton(
                   child: Text(
                     'Good luck!',
                     textAlign: TextAlign.center,
@@ -73,12 +75,21 @@ class _DiceState extends State<Dice> {
                       fontSize: Constants.playButtonFontSize,
                     ),
                   ),
-                  color: Colors.blue,
-                  onPressed: diceChanger,
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                    BorderRadius.circular(Constants.playButtonBorderRadius),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        Constants.playButtonBorderRadius,
+                      ),
+                    ),
+                    primary: Colors.blue,
+                    padding: EdgeInsets.fromLTRB(
+                      Constants.playButtonTopBottomPadding,
+                      Constants.playButtonLeftRightPadding,
+                      Constants.playButtonTopBottomPadding,
+                      Constants.playButtonLeftRightPadding,
+                    ),
                   ),
+                  onPressed: () {},
                 ),
               ),
             ],
