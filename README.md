@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is a dice roller with BLoC pattern implementation whos dynamic functionalities depends on whether there is a match between the two dice or not.
 
 A few resources to get you started if this is your first Flutter project:
 
