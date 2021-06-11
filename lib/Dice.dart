@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math';
 import 'assets/assets.dart';
 import 'utils/constants.dart';
 
@@ -10,6 +10,7 @@ class Dice extends StatefulWidget {
 
 class _DiceState extends State<Dice> {
   AssetImage topDice, bottomDice;
+  var answer = "Try to match the dices";
 
   @override
   void initState() {
@@ -20,12 +21,76 @@ class _DiceState extends State<Dice> {
     });
   }
 
-  void diceChanger() {}
+  void diceChanger() {
+    int topDiceNewValue = (1 + Random().nextInt(6));
+    int bottomDiceNewValue = (1 + Random().nextInt(6));
+    AssetImage firstImage;
+    AssetImage secondImage;
+    switch (topDiceNewValue) {
+      case 1:
+        firstImage = one;
+        break;
+      case 2:
+        firstImage = two;
+        break;
+      case 3:
+        firstImage = three;
+        break;
+      case 4:
+        firstImage = four;
+        break;
+      case 5:
+        firstImage = five;
+        break;
+      case 6:
+        firstImage = six;
+        break;
+    }
+    switch (bottomDiceNewValue) {
+      case 1:
+        secondImage = one;
+        break;
+      case 2:
+        secondImage = two;
+        break;
+      case 3:
+        secondImage = three;
+        break;
+      case 4:
+        secondImage = four;
+        break;
+      case 5:
+        secondImage = five;
+        break;
+      case 6:
+        secondImage = six;
+        break;
+    }
+    setState(
+      () {
+        topDice = firstImage;
+        bottomDice = secondImage;
+        if (topDice == bottomDice) {
+          answer = "Dices Matched";
+        } else {
+          answer = "Keep Trying";
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    Color getColor() {
+      if (topDice == bottomDice) {
+        return Colors.green;
+      } else {
+        return Colors.red;
+      }
+    }
+
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: getColor(),
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
@@ -42,6 +107,14 @@ class _DiceState extends State<Dice> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text(
+                answer,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 35.0,
+                ),
+              ),
               Container(
                 margin: EdgeInsets.fromLTRB(50.0, 50.0, 50.0, 20.0),
                 child: Column(
@@ -63,7 +136,7 @@ class _DiceState extends State<Dice> {
               Container(
                 margin: EdgeInsets.only(top: Constants.buttonTopMargin),
                 child: RaisedButton(
-                  padding: EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 20.0),
+                  padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   child: Text(
                     'Good luck!',
                     textAlign: TextAlign.center,
@@ -77,7 +150,7 @@ class _DiceState extends State<Dice> {
                   onPressed: diceChanger,
                   shape: RoundedRectangleBorder(
                     borderRadius:
-                    BorderRadius.circular(Constants.playButtonBorderRadius),
+                        BorderRadius.circular(Constants.playButtonBorderRadius),
                   ),
                 ),
               ),
