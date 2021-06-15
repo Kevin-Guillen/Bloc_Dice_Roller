@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'utils/assets.dart';
 import 'dart:math';
-import 'assets/assets.dart';
 import 'utils/constants.dart';
 
-class Dice extends StatefulWidget {
+class DicePage extends StatefulWidget {
   @override
-  _DiceState createState() => _DiceState();
+  _DicePageState createState() => _DicePageState();
 }
 
-class _DiceState extends State<Dice> {
-  AssetImage topDice, bottomDice;
+class _DicePageState extends State<DicePage> {
+  late AssetImage topDice;
+  late AssetImage bottomDice;
   var answer = "Try to match the dices";
-
   @override
   void initState() {
     super.initState();
@@ -90,7 +90,7 @@ class _DiceState extends State<Dice> {
     }
 
     return Scaffold(
-      backgroundColor: getColor(),
+      backgroundColor: Colors.green,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
@@ -116,7 +116,12 @@ class _DiceState extends State<Dice> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(50.0, 50.0, 50.0, 20.0),
+                margin: EdgeInsets.fromLTRB(
+                  Constants.dicesContainerMarginLeftTopRight,
+                  Constants.dicesContainerMarginLeftTopRight,
+                  Constants.dicesContainerMarginLeftTopRight,
+                  Constants.dicesContainerMarginBottom,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -135,8 +140,7 @@ class _DiceState extends State<Dice> {
               ),
               Container(
                 margin: EdgeInsets.only(top: Constants.playButtonTopMargin),
-                child: RaisedButton(
-                  padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                child: ElevatedButton(
                   child: Text(
                     'Good luck!',
                     textAlign: TextAlign.center,
@@ -146,12 +150,21 @@ class _DiceState extends State<Dice> {
                       fontSize: Constants.playButtonFontSize,
                     ),
                   ),
-                  color: Colors.blue,
-                  onPressed: diceChanger,
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                    BorderRadius.circular(Constants.playButtonBorderRadius),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        Constants.playButtonBorderRadius,
+                      ),
+                    ),
+                    primary: Colors.blue,
+                    padding: EdgeInsets.fromLTRB(
+                      Constants.playButtonTopBottomPadding,
+                      Constants.playButtonLeftRightPadding,
+                      Constants.playButtonTopBottomPadding,
+                      Constants.playButtonLeftRightPadding,
+                    ),
                   ),
+                  onPressed: () {},
                 ),
               ),
             ],

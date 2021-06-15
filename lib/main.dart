@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Dice.dart';
+import 'dice_page.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         accentColor: Colors.black,
       ),
-      home: Dice(),
+      home: DicePage(),
     );
   }
 }
