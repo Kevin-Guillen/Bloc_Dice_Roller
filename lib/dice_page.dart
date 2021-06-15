@@ -16,8 +16,8 @@ class _DiceState extends State<Dice> {
   void initState() {
     super.initState();
     setState(() {
-      topDice = one;
-      bottomDice = one;
+      topDice = diceOne;
+      bottomDice = diceOne;
     });
   }
 
@@ -28,46 +28,46 @@ class _DiceState extends State<Dice> {
     AssetImage secondImage;
     switch (topDiceNewValue) {
       case 1:
-        firstImage = one;
+        firstImage = diceOne;
         break;
       case 2:
-        firstImage = two;
+        firstImage = diceTwo;
         break;
       case 3:
-        firstImage = three;
+        firstImage = diceThree;
         break;
       case 4:
-        firstImage = four;
+        firstImage = diceFour;
         break;
       case 5:
-        firstImage = five;
+        firstImage = diceFive;
         break;
       case 6:
-        firstImage = six;
+        firstImage = diceSix;
         break;
     }
     switch (bottomDiceNewValue) {
       case 1:
-        secondImage = one;
+        secondImage = diceOne;
         break;
       case 2:
-        secondImage = two;
+        secondImage = diceTwo;
         break;
       case 3:
-        secondImage = three;
+        secondImage = diceThree;
         break;
       case 4:
-        secondImage = four;
+        secondImage = diceFour;
         break;
       case 5:
-        secondImage = five;
+        secondImage = diceFive;
         break;
       case 6:
-        secondImage = six;
+        secondImage = diceSix;
         break;
     }
     setState(
-      () {
+          () {
         topDice = firstImage;
         bottomDice = secondImage;
         if (topDice == bottomDice) {
@@ -134,7 +134,7 @@ class _DiceState extends State<Dice> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: Constants.buttonTopMargin),
+                margin: EdgeInsets.only(top: Constants.playButtonTopMargin),
                 child: RaisedButton(
                   padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   child: Text(
@@ -150,7 +150,7 @@ class _DiceState extends State<Dice> {
                   onPressed: diceChanger,
                   shape: RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.circular(Constants.playButtonBorderRadius),
+                    BorderRadius.circular(Constants.playButtonBorderRadius),
                   ),
                 ),
               ),
