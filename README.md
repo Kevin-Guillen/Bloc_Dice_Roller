@@ -1,6 +1,10 @@
+
 # bloc_dice_roller
 
 This is a dice roller with BLoC pattern implementation whos dynamic functionalities depends on whether there is a match between the two dice or not.
+
+![Android-Emulator-Nexus-6-API-30](https://user-images.githubusercontent.com/84336422/122467512-fe159680-cf90-11eb-8bdb-c991602e085a.gif)
+
 
 ## Getting Started
 
