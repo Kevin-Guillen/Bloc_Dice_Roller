@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dice_page.dart';
+import 'src/bloc/dice_bloc.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  DiceBloc _diceBloc = DiceBloc();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,7 +18,9 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         accentColor: Colors.black,
       ),
-      home: DicePage(),
+      home: DicePage(
+        bloc: _diceBloc,
+      ),
     );
   }
 }

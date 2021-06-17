@@ -1,4 +1,5 @@
-abstract class Ibloc{
-  Future<void> initialize();
+abstract class Bloc {
+  void initialize();
+
   void dispose();
 }

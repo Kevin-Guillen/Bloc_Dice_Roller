@@ -1,24 +1,13 @@
-import 'package:dice_roller/src/bloc/dice_bloc.dart';
+import 'package:flutter/cupertino.dart';
 
-class DiceRoll extends IDiceRollBloc{
-  @override
-  // TODO: implement currentState
-  int get currentState => throw _DicePageState();
+import 'bloc.dart';
 
-  @override
-  void diceChanger() {
-    // TODO: implement diceChanger
-  }
+abstract class IDiceBloc extends Bloc {
+  Stream<List<AssetImage>> get valuesStream;
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-  }
+  List<AssetImage> defaultDice();
 
-  @override
-  Future<void> initialize() {
-    // TODO: implement initialize
-    throw UnimplementedError();
-  }
+  bool get dicesAreEqual;
 
+  void diceRoller();
 }
